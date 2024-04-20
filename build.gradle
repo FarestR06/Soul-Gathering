@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        maven {
+            name = "Jitpack"
+            url ''
+        }
+    }
+}
+
 plugins {
     id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'maven-publish'
@@ -15,6 +24,7 @@ repositories {
         name = "Ladysnake Mods"
         url = 'https://maven.ladysnake.org/releases'
     }
+    mavenCentral()
 }
 
 dependencies {
