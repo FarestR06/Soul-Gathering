@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "soul_gathering",
+  "version": "${version}",
+  "name": "Soul Gathering",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "icon": "assets/soul_gathering/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.farestr06.soul_gathering.client.SoulGatheringClient"
+    ],
+    "main": [
+      "com.farestr06.soul_gathering.SoulGathering"
+    ],
+    "cardinal-components": [
+      "com.farestr06.soul_gathering.component.ModComponents"
+    ]
+  },
+  "mixins": [
+    "soul_gathering.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },"custom": {
+  "cardinal-components": [
+    "soul_gathering:generic"
+  ]
+}
+
+}
