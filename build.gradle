@@ -11,6 +11,8 @@ plugins {
     id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'maven-publish'
 }
+apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 version = project.mod_version
 group = project.maven_group
@@ -25,6 +27,8 @@ repositories {
         url = 'https://maven.ladysnake.org/releases'
     }
     mavenCentral()
+    maven { url "https://jitpack.io"  }
+
 }
 
 dependencies {
