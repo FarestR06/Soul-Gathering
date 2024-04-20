@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Soul_Gathering.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Soul_Gathering.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Soul_Gathering.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Soul_Gathering.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Soul_Gathering_Test.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Soul_Gathering_Test.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Soul_Gathering_Test.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Soul_Gathering_Test.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.github.FarestR06.Soul_Gathering.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.github.FarestR06.Soul_Gathering.test.iml" />
     </modules>
   </component>
 </project>
