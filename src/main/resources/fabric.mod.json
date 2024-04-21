@@ -27,10 +27,10 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
-  },"custom": {
-  "cardinal-components": [
-    "soul_gathering:generic"
-  ]
-}
-
+  },
+  "custom": {
+    "cardinal-components": [
+      "soul_gathering:soul"
+    ]
+  }
 }
