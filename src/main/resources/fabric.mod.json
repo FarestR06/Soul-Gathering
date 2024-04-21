@@ -3,9 +3,14 @@
   "id": "soul_gathering",
   "version": "${version}",
   "name": "Soul Gathering",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Adds the Soul mechanic from Minecraft Dungeons",
+  "authors": [
+    "FarestR06"
+  ],
+  "contact": {
+    "homepage": "https://github.com/FarestR06/Soul-Gathering",
+    "issues": "https://github.com/FarestR06/Soul-Gathering/issues"
+  },
   "license": "LGPL-3.0",
   "icon": "assets/soul_gathering/icon.png",
   "environment": "*",
