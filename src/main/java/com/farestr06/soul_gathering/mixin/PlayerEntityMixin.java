@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * This mixin adds souls to the player whenever it kills an enemy by triggering its component's <code>addSouls</code> method..
+ */
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin implements SoulGatheringImpl {
 
@@ -25,10 +28,4 @@ public abstract class PlayerEntityMixin implements SoulGatheringImpl {
                 net.minecraft.util.math.MathHelper.floor(Random.create().nextFloat()
                         * SoulComponentHelper.MathHelper.calcSoulAdderAmount(provider)));
     }
-
-    @Inject(method = "onKilledOther", at = @At(value = "TAIL"))
-    private void syncSoulGathering(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
-        ModComponents.SOUL_COMPONENT.sync(provider);
-    }
-
 }

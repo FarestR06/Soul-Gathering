@@ -10,6 +10,7 @@ public class SoulGathering implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        LOGGER.info("Initializing Soul Gathering");
         SoulCommand.registerCommand();
     }
 }

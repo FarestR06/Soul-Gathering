@@ -22,10 +22,12 @@ public class SoulComponentHelper {
         }
 
         /**
-         * Calculates the total soul gathering of each item.
+         * Calculates the total soul gathering of each item; this class is used by {@link com.farestr06.soul_gathering.mixin.PlayerEntityMixin PlayerEntityMixin}
+         * to determine how many souls the player should earn.
          * @param provider The player entity to add souls to.
          * @return The amount of souls to add.
          * @throws IllegalStateException If an item implementing {@link SoulGatheringImpl SoulGatheringImpl} is tagged with <code>SOUL_GATHERING_ITEMS</code>. See {@link SoulTags SoulTags}.
+         * @see com.farestr06.soul_gathering.mixin.PlayerEntityMixin
          */
         public static int calcSoulAdderAmount(PlayerEntity provider) {
             int amount = 0;

@@ -10,12 +10,12 @@ import net.minecraft.util.Identifier;
 /**
  * <p>This class contains tags that add Soul Gathering amounts.</p>
  * <p>These tags <strong>should not</strong> be applied to objects that implement {@link SoulGatheringImpl SoulGatheringImpl}, as the interface already adds SoulGathering.</p>
- * @see SoulComponentHelper SoulComponentHelper
+ * @see SoulComponentHelper
  * @since 1.1.1
  */
 public class SoulTags {
     public static final TagKey<Item> SOUL_GATHERING_ITEMS = createItemTag("soul_gathering_items");
-    public static final TagKey<Enchantment> SOUL_GATHERING_ENCHANTMENTS = createEnchantmentTag("soul_gathering_items");
+    public static final TagKey<Enchantment> SOUL_GATHERING_ENCHANTMENTS = createEnchantmentTag("soul_gathering_enchantments");
 
     private static TagKey<Item> createItemTag(String name) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier("soul_gathering", name));
