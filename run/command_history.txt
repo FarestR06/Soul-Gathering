@@ -1,48 +1,50 @@
-/data get entity @s
-/data get entity Player520
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": {soul_count:[]}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": {soul_count:[]}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": soul_count{}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": soul_count}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": soul_count[]}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul": soul_count[{}]}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul"}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":[]}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":d}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":[]}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":{}}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":i}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":35}}}
-/data merge entity Player520 {cardinal_components: {"soul_gathering:soul":{"soul_count":0}}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":[]}}
-/data get entity Player520
-/data merge entity @s {cardinal_components: {"soul_gathering:soul":{"soul_count":0}}}
-/data get entity @s
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":[]}}
-/data get entity Player520 {cardinal_components: {"soul_gathering:soul":{}}}
-/data merge entity @s {cardinal_components: {"soul_gathering:soul":{"soul_count":{}}}}
-/data merge entity @s {cardinal_components: {"soul_gathering:soul":{"soul_count":{0}}}}
-/data merge entity @s {cardinal_components: {"soul_gathering:soul":{"soul_count":0}}}
-/data merge entity @s {Brain:{cardinal_components {"soul_gathering:soul":{"soul_count":0}}}}
-/data merge entity @s {Brain:{cardinal_components:{"soul_gathering:soul":{"soul_count":0}}}}
-/data get entity @s {Brain:{cardinal_components:{"soul_gathering:soul":{"soul_count":0}}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{"soul_count":0}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{"soul_count":{}}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{"soul_count":[]}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{soul_count:[]}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{soul_count:{}}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{soul_count:[]}}}
-/data get entity @s {cardinal_components:{"soul_gathering:soul":{soul_count}}}
-/data get entity @s cardinal_components.soul_gathering
-/data get entity @s cardinal_components."soul_gathering"
-/data get entity @s
-/data get entity @s cardinal_components."soul_gathering:soul"
-/data get entity @s cardinal_components."soul_gathering:soul".soul_count:35
-/data get entity @s cardinal_components."soul_gathering:soul"."soul_count":35
-/data get entity @s cardinal_components."soul_gathering:soul"."soul_count:35"
-/data get entity @s cardinal_components."soul_gathering:soul"."soul_count"
-/data merge entity @s cardinal_components."soul_gathering:soul"."soul_count:0"
-/data merge entity @s {cardinal_components."soul_gathering:soul"."soul_count"}
-/data merge entity @s {cardinal_components:{"soul_gathering:soul":{"soul_count":0}}}
-/data merge entity @s {cardinal_components:{"soul_gathering:soul":{"soul_count":100}}}
+/soul query percent Player288
+/soul add 128 @s
+/soul add 128 Player288
+/soul add 128 @s
+/soul query percent @s
+/soul add 9999 @s
+/soul add 8192 @s
+/soul set 8192 @s
+/soul query percent @s
+/soul set 0 @s
+/soul query percent Player69
+/soul set Player69 8192
+/soul query percent Player69
+/soul set @s 0
+/soul set @s 100
+/soul set @s 8192
+/soul set @s 100
+/soul set @s 0
+/soul set Player571 8192
+/soul set Player571 100
+/soul set Player571 500
+/soul add Player571 10
+/soul add Player571 100
+/soul add @s 100
+/soul add @s 256
+/soul add @s 1000
+/soul query percent @s
+/soul add @s 1000
+/soul query percent @s
+/soul query percent
+/soul query percent @s
+/soul set @s 4096
+/soul set @s 4000
+/soul set @s 10
+/soul set @s 4000
+/soul set @s 45
+/soul set @s 40
+/soul set @s 4
+/soul set @s 4000
+/soul set @s 4
+/soul set @s 100
+/soul set @s 1000
+/soul set @s 4000
+/soul set @s 1000
+/soul set @s 0
+/soul set @s 1000
+/soul set Player591 8192
+/soul remove Player591 1000
+/soul query total Player591
+/soul query percent Player591
