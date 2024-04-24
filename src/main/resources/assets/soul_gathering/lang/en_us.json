@@ -1,0 +1,4 @@
+{
+  "command.soul_gathering.too_many_souls.add": "Couldn't add to soul count; the specified amount is too high",
+  "command.soul_gathering.too_many_souls.remove": "Couldn't remove from soul count; the specified amount is too high"
+}

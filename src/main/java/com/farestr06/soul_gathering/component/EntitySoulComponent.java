@@ -1,10 +1,23 @@
 package com.farestr06.soul_gathering.component;
 
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
+
+    private final PlayerEntity provider;
+
+    public EntitySoulComponent(PlayerEntity player) {
+        this.provider = player;
+    }
     private int soulCount = 0;
+
+    public void setSoulCount(int soulCount) {
+        this.soulCount = soulCount;
+        ModComponents.SOUL_COMPONENT.sync(provider);
+    }
 
     @Override
     public int getSoulCount() {
@@ -18,6 +31,7 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
         } else {
             soulCount += amount;
         }
+        ModComponents.SOUL_COMPONENT.sync(provider);
     }
 
     @Override
@@ -27,6 +41,7 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
         } else {
             soulCount -= amount;
         }
+        ModComponents.SOUL_COMPONENT.sync(provider);
     }
 
     @Override
@@ -37,5 +52,15 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
     @Override
     public void writeToNbt(NbtCompound tag) {
         tag.putInt("soul_count", this.soulCount);
+    }
+
+    @Override
+    public boolean shouldSyncWith(ServerPlayerEntity player) {
+        return player == this.provider; // only sync with the provider itself
+    }
+
+    @Override
+    public void tick() {
+
     }
 }

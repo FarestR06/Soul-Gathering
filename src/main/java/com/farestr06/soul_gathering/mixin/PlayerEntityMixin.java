@@ -1,6 +1,7 @@
 package com.farestr06.soul_gathering.mixin;
 
 import com.farestr06.soul_gathering.component.ModComponents;
+import com.farestr06.soul_gathering.component.SoulComponentHelper;
 import com.farestr06.soul_gathering.util.SoulGatheringImpl;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,15 @@ public abstract class PlayerEntityMixin implements SoulGatheringImpl {
     PlayerEntity provider = (PlayerEntity) (Object)this;
 
     @Inject(method = "onKilledOther", at = @At(value = "HEAD"))
-    private void injected(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
-        ModComponents.SOUL_COMPONENT.get(provider).addSouls(Random.create().nextBetweenExclusive(1, 16));
+    private void injectOnKilledOther(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
+        ModComponents.SOUL_COMPONENT.get(provider).addSouls(
+                net.minecraft.util.math.MathHelper.floor(Random.create().nextFloat()
+                        * SoulComponentHelper.MathHelper.calcSoulAdderAmount(provider)));
     }
+
+    @Inject(method = "onKilledOther", at = @At(value = "TAIL"))
+    private void syncSoulGathering(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
+        ModComponents.SOUL_COMPONENT.sync(provider);
+    }
+
 }

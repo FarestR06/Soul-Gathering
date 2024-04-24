@@ -13,6 +13,6 @@ public class ModComponents implements EntityComponentInitializer {
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-        registry.registerForPlayers(SOUL_COMPONENT, it -> new EntitySoulComponent(), RespawnCopyStrategy.INVENTORY);
+        registry.registerForPlayers(SOUL_COMPONENT, EntitySoulComponent::new, RespawnCopyStrategy.INVENTORY);
     }
 }

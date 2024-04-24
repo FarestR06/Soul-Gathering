@@ -4,6 +4,8 @@ import com.farestr06.soul_gathering.component.ModComponents;
 import net.minecraft.entity.player.PlayerEntity;
 
 public interface SoulGatheringImpl {
+    int soulGathering = 0;
+
     default void addSouls(PlayerEntity provider, int amount) {
         ModComponents.SOUL_COMPONENT.get(provider).addSouls(amount);
     }
@@ -15,5 +17,9 @@ public interface SoulGatheringImpl {
     }
     default boolean canSpendSouls(PlayerEntity provider, int amount) {
         return !(ModComponents.SOUL_COMPONENT.get(provider).getSoulCount() - amount <= 0);
+    }
+
+    default int getSoulGathering() {
+        return soulGathering;
     }
 }
