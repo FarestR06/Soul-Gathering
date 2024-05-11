@@ -2,14 +2,15 @@ package com.farestr06.soul_gathering.component;
 
 import com.farestr06.soul_gathering.util.SoulTags;
 import com.farestr06.soul_gathering.util.SoulGatheringImpl;
-import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
+import net.fabricmc.fabric.api.tag.convention.v2.TagUtil;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.random.Random;
 
-import java.util.Map;
 import java.util.function.Predicate;
 
 public class SoulComponentHelper {
@@ -60,8 +61,9 @@ public class SoulComponentHelper {
 
         public static int getSoulGatheringFromEnchantments(ItemStack itemStack) {
             int amount = 0;
-            Map<Enchantment, Integer> enchantmentIntMap = EnchantmentHelper.get(itemStack);
-            for (Enchantment enchantment : enchantmentIntMap.keySet()) {
+            ItemEnchantmentsComponent enchantments = EnchantmentHelper.getEnchantments(itemStack);
+            for (RegistryEntry<Enchantment> entry: enchantments.getEnchantments().stream().toList()) {
+                Enchantment enchantment = entry.value();
                 if (enchantment instanceof SoulGatheringImpl) {
                     if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ENCHANTMENTS, enchantment)) {
                         throw new IllegalStateException("Enchantments implementing SoulGatheringImpl should not be tagged with SOUL_GATHERING_ENCHANTMENTS!");
