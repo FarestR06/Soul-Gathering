@@ -1,6 +1,7 @@
 package com.farestr06.soul_gathering.component;
 
-import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
+import net.minecraft.registry.RegistryWrapper;
+import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -45,13 +46,18 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
     }
 
     @Override
-    public void readFromNbt(NbtCompound tag) {
+    public void readFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
         this.soulCount = tag.getInt("soul_count");
     }
 
     @Override
-    public void writeToNbt(NbtCompound tag) {
+    public void writeToNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
         tag.putInt("soul_count", this.soulCount);
+    }
+
+    @java.lang.Override
+    public boolean equals(java.lang.Object o) {
+        return false;
     }
 
     @Override
