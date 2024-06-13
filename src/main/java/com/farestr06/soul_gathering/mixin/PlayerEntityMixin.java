@@ -2,7 +2,6 @@ package com.farestr06.soul_gathering.mixin;
 
 import com.farestr06.soul_gathering.component.ModComponents;
 import com.farestr06.soul_gathering.component.SoulComponentHelper;
-import com.farestr06.soul_gathering.util.SoulGatheringImpl;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -14,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * This mixin adds souls to the player whenever it kills an enemy by triggering its component's <code>addSouls</code> method..
+ * This mixin adds souls to the player whenever it kills an enemy by triggering its component's <code>addSouls</code> method.
  */
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin implements SoulGatheringImpl {
+public abstract class PlayerEntityMixin {
 
     @Unique
     PlayerEntity provider = (PlayerEntity) (Object)this;

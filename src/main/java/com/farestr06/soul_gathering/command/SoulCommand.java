@@ -33,7 +33,7 @@ public class SoulCommand {
                         .then(argument("player", EntityArgumentType.player())
                             .executes(context -> {
                                 final PlayerEntity player = EntityArgumentType.getPlayer(context, "player");
-                                int value = SoulComponentHelper.MathHelper.mappedSoulCount(player);
+                                int value = ModComponents.SOUL_COMPONENT.get(player).getSoulCount() ;
                                 context.getSource().sendFeedback(() -> Text.literal("%s currently has %s souls".formatted(player.getName().getLiteralString(), value)), true);
                                 return value;
                             }))))

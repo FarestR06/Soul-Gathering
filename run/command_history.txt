@@ -1,8 +1,3 @@
-/soul query percent Player288
-/soul add 128 @s
-/soul add 128 Player288
-/soul add 128 @s
-/soul query percent @s
 /soul add 9999 @s
 /soul add 8192 @s
 /soul set 8192 @s
@@ -48,3 +43,8 @@
 /soul remove Player591 1000
 /soul query total Player591
 /soul query percent Player591
+/soul query percent Player180
+/soul query total Player180
+/soul set Player180 0
+/soul query total Player180
+/give @s minecraft:diamond_chestplate

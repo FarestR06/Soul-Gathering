@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ModComponents implements EntityComponentInitializer {
 
-    public static final ComponentKey<SoulComponent> SOUL_COMPONENT = ComponentRegistry.getOrCreate(new Identifier("soul_gathering", "soul"), SoulComponent.class);
+    public static final ComponentKey<SoulComponent> SOUL_COMPONENT = ComponentRegistry.getOrCreate(Identifier.of("soul_gathering", "soul"), SoulComponent.class);
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {

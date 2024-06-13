@@ -1,7 +1,7 @@
 package com.farestr06.soul_gathering.component;
 
+import com.farestr06.soul_gathering.util.SoulObjectRegistry;
 import com.farestr06.soul_gathering.util.SoulTags;
-import com.farestr06.soul_gathering.util.SoulGatheringImpl;
 import net.fabricmc.fabric.api.tag.convention.v2.TagUtil;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
@@ -10,8 +10,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.random.Random;
-
-import java.util.function.Predicate;
 
 public class SoulComponentHelper {
 
@@ -27,32 +25,21 @@ public class SoulComponentHelper {
          * to determine how many souls the player should earn.
          * @param provider The player entity to add souls to.
          * @return The amount of souls to add.
-         * @throws IllegalStateException If an item implementing {@link SoulGatheringImpl SoulGatheringImpl} is tagged with <code>SOUL_GATHERING_ITEMS</code>. See {@link SoulTags SoulTags}.
          * @see com.farestr06.soul_gathering.mixin.PlayerEntityMixin
          */
         public static int calcSoulAdderAmount(PlayerEntity provider) {
             int amount = 0;
             for (ItemStack itemStack : provider.getArmorItems()) {
-                if (itemStack.getItem() instanceof SoulGatheringImpl) {
-                    if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                        throw new IllegalStateException("Items implementing SoulGatheringImpl should not be tagged with SOUL_GATHERING_ITEMS!");
-                    }                amount += ((SoulGatheringImpl) itemStack.getItem()).getSoulGathering();
+                if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
+                    amount += SoulObjectRegistry.Items.getSoulGatheringFromItem(itemStack.getItem());
                     amount += getSoulGatheringFromEnchantments(itemStack);
-                }
-                else if (itemStack.streamTags().anyMatch(Predicate.isEqual(SoulTags.SOUL_GATHERING_ITEMS))) {
-                    amount += Random.create().nextBetweenExclusive(1, 4);
                 }
             }
             for (ItemStack itemStack : provider.getHandItems()) {
-                if (itemStack.getItem() instanceof SoulGatheringImpl) {
-                    if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                        throw new IllegalStateException("Items implementing SoulGatheringImpl should not be tagged with SOUL_GATHERING_ITEMS!");
-                    }
-                    amount += ((SoulGatheringImpl) itemStack.getItem()).getSoulGathering();
+                if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
+                    amount += SoulObjectRegistry.Items.getSoulGatheringFromItem(itemStack.getItem());
                     amount += getSoulGatheringFromEnchantments(itemStack);
-                }
-                else if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                    amount += Random.create().nextBetweenExclusive(2, 8);
+
                 }
             }
             amount = net.minecraft.util.math.MathHelper.floor(amount * Random.create().nextFloat());
@@ -64,15 +51,9 @@ public class SoulComponentHelper {
             ItemEnchantmentsComponent enchantments = EnchantmentHelper.getEnchantments(itemStack);
             for (RegistryEntry<Enchantment> entry: enchantments.getEnchantments().stream().toList()) {
                 Enchantment enchantment = entry.value();
-                if (enchantment instanceof SoulGatheringImpl) {
-                    if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ENCHANTMENTS, enchantment)) {
-                        throw new IllegalStateException("Enchantments implementing SoulGatheringImpl should not be tagged with SOUL_GATHERING_ENCHANTMENTS!");
-                    }
-                    amount += ((SoulGatheringImpl) enchantment).getSoulGathering();
-                    amount = net.minecraft.util.math.MathHelper.floor(amount * (EnchantmentHelper.getLevel(enchantment, itemStack) * 0.1));
-                }
-                else if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                    amount += Random.create().nextBetweenExclusive(1, 4);
+                if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem()) && TagUtil.isIn(SoulTags.SOUL_GATHERING_ENCHANTMENTS, enchantment)) {
+                    amount += SoulObjectRegistry.Enchantments.getSoulGatheringFromEnchantment(enchantment);
+                    amount = net.minecraft.util.math.MathHelper.floor(amount * (EnchantmentHelper.getLevel(entry, itemStack) * 0.1));
                 }
             }
             return amount;

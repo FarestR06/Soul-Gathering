@@ -4,32 +4,20 @@ import com.farestr06.soul_gathering.component.ModComponents;
 import net.minecraft.entity.player.PlayerEntity;
 
 /**
- * The <code>SoulGatheringImpl</code> interface provides easy access to the {@link com.farestr06.soul_gathering.component.EntitySoulComponent EntitySoulComponent} class.
- * Any game element that accesses a player's soul count should do so by implementing this interface.<br>
+ * The <code>SoulGatheringImpl</code> interface provided easy access to the {@link com.farestr06.soul_gathering.component.EntitySoulComponent EntitySoulComponent} class.
+ * Any game element that accessed a player's soul count would do so by implementing this interface.<br>
  * <br>
- * <strong>Example:<strong><br>
- * <code>
- *     public class SoulItem extends Item implements SoulGatheringImpl <br>
- *     /.../<br>
- *     &#064;Override<br>
- *     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {<br>
- *         if (canSpendSouls(user, 32)) {<br>
- *             entity.getWorld().createExplosion(entity, entity.getX(), entity.getY(), entity.getZ(), 3f, World.ExplosionSourceType.MOB);<br>
- *             removeSouls(user, 32);<br>
- *         }<br>
- *         return super.useOnEntity(stack, user, entity, hand);<br>
- *     }<br>
- * </code>
- *
- * @apiNote Any object that implements this interface <i>should not</i> be tagged under any of the tags in the {@link SoulTags SoulTags} class, as this interface already provides a way to give items soul gathering.
+ * @apiNote Any object that implemented this interface should not have been tagged under any of the tags in the {@link SoulTags SoulTags} class, as this interface provided a way to give items soul gathering.
  * @see com.farestr06.soul_gathering.component.EntitySoulComponent
+ * @deprecated This class has been deprecated in favor of {@link SoulObjectRegistry}, as it is more flexible.
  */
+@Deprecated(forRemoval = true)
 public interface SoulGatheringImpl {
     int soulGathering = 0;
 
     /**
-     * This method takes a {@link PlayerEntity playerEntity} and attempts to add souls to it. If the provided
-     * amount exceeds the maximum soul count, a {@link SoulCountOutOfBoundsException soulParamOutOfBoundsException} is thrown.
+     * This method would take a {@link PlayerEntity playerEntity} and attempted to add souls to it. If the provided
+     * amount exceeded the maximum soul count, a {@link SoulCountOutOfBoundsException soulParamOutOfBoundsException} would be thrown.
      * @param provider the {@link PlayerEntity playerEntity} to add souls to
      * @param amount the amount of souls to add to the provider.
      * @throws SoulCountOutOfBoundsException if an attempt is made to add more souls than the player can hold.
@@ -42,8 +30,8 @@ public interface SoulGatheringImpl {
     }
 
     /**
-     * This method takes a {@link PlayerEntity playerEntity} and attempts to remove souls from it. If the provided
-     * amount exceeds the minimum soul count, a {@link SoulCountOutOfBoundsException soulParamOutOfBoundsException} is thrown.
+     * This method would take a {@link PlayerEntity playerEntity} and attempted to remove souls from it. If the provided
+     * amount exceeded the minimum soul count, a {@link SoulCountOutOfBoundsException soulParamOutOfBoundsException} would be thrown.
      * @param provider the playerEntity to remove souls from
      * @param amount the amount of souls to remove from the provider.
      * @throws SoulCountOutOfBoundsException if an attempt is made to remove more souls than the player already has.
@@ -56,7 +44,7 @@ public interface SoulGatheringImpl {
     }
 
     /**
-     * This method takes a {@link PlayerEntity playerEntity} and returns the number of souls they currently hold.
+     * This method would take a {@link PlayerEntity playerEntity} and return the number of souls they held.
      * @param provider the playerEntity whose soul count should be returned
      * @return the amount of souls the provided playerEntity holds
      */
@@ -65,7 +53,7 @@ public interface SoulGatheringImpl {
     }
 
     /**
-     * This method tests if the provided amount of souls can be removed from the provided player.
+     * This method would test if the provided amount of souls can be removed from the provided player.
      * @param provider the {@link PlayerEntity playerEntity} to test the removal on
      * @param amount the number of souls to test the removal with
      * @return if the provided amount of souls can be removed from the player
@@ -75,7 +63,7 @@ public interface SoulGatheringImpl {
     }
 
     /**
-     * This method tests if the provided amount of souls can be added to the provided player.
+     * This method would test if the provided amount of souls could be added to the provided player.
      * @param provider the {@link PlayerEntity playerEntity} to test the addition on
      * @param amount the number of souls to test the addition with
      * @return if the provided amount of souls can be added to the player
@@ -85,7 +73,7 @@ public interface SoulGatheringImpl {
     }
 
     /**
-     * This method is used internally to determine how many souls a player should receive upon killing an enemy.
+     * This method was used internally to determine how many souls a player should receive upon killing an enemy.
      * @return the implementing object's soul gathering
      */
     default int getSoulGathering() {

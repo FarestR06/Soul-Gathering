@@ -1,9 +1,9 @@
 package com.farestr06.soul_gathering.util;
 
 /**
- * This exception class is thrown by {@link SoulGatheringImpl SoulGatheringImpl} when attempting to add or remove souls in a way that exceeds the component's intended limits.
- * @see SoulGatheringImpl
+ * @deprecated The class is no longer used internally, so it has been deprecated.
  */
+@Deprecated(forRemoval = true)
 public class SoulCountOutOfBoundsException extends RuntimeException {
     int amount;
 

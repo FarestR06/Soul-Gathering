@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -14,16 +15,25 @@ public class SoulHudOverlay implements HudRenderCallback {
     static int x = 0;
     static int xb = 0;
     static int h = 0;
-    private static final Identifier SOUL_EMPTY = new Identifier("soul_gathering",
+    private static final Identifier SOUL_EMPTY = Identifier.of("soul_gathering",
             "hud/soul_empty");
-    private static final Identifier SOUL_HALF = new Identifier("soul_gathering",
+    private static final Identifier SOUL_HALF = Identifier.of("soul_gathering",
             "hud/soul_half");
-    private static final Identifier SOUL_FULL = new Identifier("soul_gathering",
+    private static final Identifier SOUL_FULL = Identifier.of("soul_gathering",
             "hud/soul_full");
 
+    static private int y(MinecraftClient minecraft) {
+        int height = minecraft.getWindow().getScaledHeight();
+        assert minecraft.player != null;
+        if (!minecraft.player.isSubmergedIn(FluidTags.WATER)) {
+            return height + 9;
+        } else {
+            return height;
+        }
+    }
+
     @Override
-    @SuppressWarnings("ConstantConditions")
-    public void onHudRender(DrawContext drawContext, float tickDelta) {
+    public void onHudRender(DrawContext drawContext, RenderTickCounter tickCounter) {
         MinecraftClient minecraft = MinecraftClient.getInstance();
 
         assert minecraft != null;
@@ -47,15 +57,6 @@ public class SoulHudOverlay implements HudRenderCallback {
                 if (i * 2 + 1 != h) continue;
                 drawContext.drawGuiTexture(SOUL_HALF, xb, y(minecraft) - 59 , 9, 9);
             }
-        }
-    }
-    static private int y(MinecraftClient minecraft) {
-        int height = minecraft.getWindow().getScaledHeight();
-        assert minecraft.player != null;
-        if (!minecraft.player.isSubmergedIn(FluidTags.WATER)) {
-            return height + 9;
-        } else {
-            return height;
         }
     }
 }
