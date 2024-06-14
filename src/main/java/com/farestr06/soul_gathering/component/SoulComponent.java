@@ -8,6 +8,4 @@ public interface SoulComponent extends Component, CommonTickingComponent {
     void setSoulCount(int soulCount);
     void addSouls(int amount);
     void removeSouls(int amount);
-
-
 }

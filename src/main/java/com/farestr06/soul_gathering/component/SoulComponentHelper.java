@@ -1,11 +1,14 @@
 package com.farestr06.soul_gathering.component;
 
-import com.farestr06.soul_gathering.util.SoulObjectRegistry;
+import com.farestr06.soul_gathering.enchantment.AddSoulsEntityEffect;
+import com.farestr06.soul_gathering.enchantment.SoulEnchantmentEffects;
+import com.farestr06.soul_gathering.item.SoulDataComponentTypes;
 import com.farestr06.soul_gathering.util.SoulTags;
 import net.fabricmc.fabric.api.tag.convention.v2.TagUtil;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.effect.EnchantmentEffectEntry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -31,16 +34,21 @@ public class SoulComponentHelper {
             int amount = 0;
             for (ItemStack itemStack : provider.getArmorItems()) {
                 if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                    amount += SoulObjectRegistry.Items.getSoulGatheringFromItem(itemStack.getItem());
-                    amount += getSoulGatheringFromEnchantments(itemStack);
+                    amount += Random.create().nextBetween(1, 4);
+
+                } else if (itemStack.getComponents().contains(SoulDataComponentTypes.SOUL_GATHERING)) {
+                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, Random.create().nextBetween(1, 4));
                 }
+                amount += getSoulGatheringFromEnchantments(itemStack);
             }
             for (ItemStack itemStack : provider.getHandItems()) {
                 if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem())) {
-                    amount += SoulObjectRegistry.Items.getSoulGatheringFromItem(itemStack.getItem());
-                    amount += getSoulGatheringFromEnchantments(itemStack);
+                    amount += Random.create().nextBetween(1, 4);
 
+                } else if (itemStack.getComponents().contains(SoulDataComponentTypes.SOUL_GATHERING)) {
+                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, Random.create().nextBetween(1, 4));
                 }
+                amount += getSoulGatheringFromEnchantments(itemStack);
             }
             amount = net.minecraft.util.math.MathHelper.floor(amount * Random.create().nextFloat());
             return amount ;
@@ -51,9 +59,15 @@ public class SoulComponentHelper {
             ItemEnchantmentsComponent enchantments = EnchantmentHelper.getEnchantments(itemStack);
             for (RegistryEntry<Enchantment> entry: enchantments.getEnchantments().stream().toList()) {
                 Enchantment enchantment = entry.value();
-                if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ITEMS, itemStack.getItem()) && TagUtil.isIn(SoulTags.SOUL_GATHERING_ENCHANTMENTS, enchantment)) {
-                    amount += SoulObjectRegistry.Enchantments.getSoulGatheringFromEnchantment(enchantment);
-                    amount = net.minecraft.util.math.MathHelper.floor(amount * (EnchantmentHelper.getLevel(entry, itemStack) * 0.1));
+                if (TagUtil.isIn(SoulTags.SOUL_GATHERING_ENCHANTMENTS, enchantment)) {
+                    amount += Random.create().nextBetween(1, 4) + EnchantmentHelper.getLevel(entry, itemStack);
+                } else if (!enchantment.getEffect(SoulEnchantmentEffects.ADD_SOULS).isEmpty()) {
+                    for (EnchantmentEffectEntry<AddSoulsEntityEffect> effectEntry: enchantment.getEffect(SoulEnchantmentEffects.ADD_SOULS)) {
+                        amount += Random.create().nextBetween(
+                                ((int) effectEntry.effect().minSouls().getValue(1)),
+                                ((int) effectEntry.effect().maxSouls().getValue(1))
+                        );
+                    }
                 }
             }
             return amount;

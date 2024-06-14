@@ -2,6 +2,7 @@ package com.farestr06.soul_gathering;
 
 import com.farestr06.soul_gathering.command.SoulCommand;
 import com.farestr06.soul_gathering.enchantment.SoulEnchantmentEffects;
+import com.farestr06.soul_gathering.item.SoulDataComponentTypes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -17,13 +18,14 @@ public class SoulGathering implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Initializing Soul Gathering");
         SoulEnchantmentEffects.init();
+        SoulDataComponentTypes.init();
         SoulCommand.registerCommand();
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             if (ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of("soul_gathering", "example"),
                     FabricLoader.getInstance().getModContainer("soul_gathering").orElseThrow(), ResourcePackActivationType.ALWAYS_ENABLED)) {
-                LOGGER.info("Successfully registered compat pack for mod \"deeperdarker\"!");
+                LOGGER.info("Examples loaded!");
             } else {
-                LOGGER.error("Couldn't load pack for mod \"deeperdarker\"!");
+                LOGGER.warn("Failed to load examples...");
             }
         }
     }
