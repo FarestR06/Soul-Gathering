@@ -11,7 +11,7 @@
     "homepage": "https://github.com/FarestR06/Soul-Gathering",
     "issues": "https://github.com/FarestR06/Soul-Gathering/issues"
   },
-  "license": "LGPL-3.0",
+  "license": "GPL-3.0",
   "icon": "assets/soul_gathering/icon.png",
   "environment": "*",
   "entrypoints": {
