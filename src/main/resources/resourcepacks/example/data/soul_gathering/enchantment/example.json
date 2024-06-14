@@ -1,0 +1,63 @@
+{
+  "description": {
+    "translate": "enchantment.soul_gathering.example"
+  },
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 1,
+  "max_level": 3,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 12
+  },
+  "max_cost": {
+    "base": 28,
+    "per_level_above_first": 12
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "chest"
+  ],
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "enchanted": "victim",
+        "affected": "attacker",
+        "effect": {
+          "type": "minecraft:apply_mob_effect",
+          "to_apply": "minecraft:darkness",
+          "min_duration": {
+            "type": "minecraft:linear",
+            "base": 10,
+            "per_level_above_first": 20
+          },
+          "max_duration": {
+            "type": "minecraft:linear",
+            "base": 30,
+            "per_level_above_first": 20
+          },
+          "min_amplifier": 0,
+          "max_amplifier": 0
+        },
+        "requirements": {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:entity_properties",
+            "entity": "attacker",
+            "predicate": {
+              "nbt": "{cardinal_components:{\"soul_gathering:soul\":{soul_count: 0}}}"
+            }
+          }
+        }
+      },
+      {
+        "enchanted": "victim",
+        "affected": "victim",
+        "effect": {
+          "type": "soul_gathering:remove_souls",
+          "min_souls": 3,
+          "max_souls": 16
+        }
+      }
+    ]
+  }
+}
