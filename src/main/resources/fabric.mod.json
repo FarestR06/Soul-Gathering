@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "soul_gathering",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "name": "Soul Gathering",
   "description": "Adds the Soul mechanic from Minecraft Dungeons",
   "authors": [
