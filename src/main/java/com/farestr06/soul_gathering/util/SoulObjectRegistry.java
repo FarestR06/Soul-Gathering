@@ -10,7 +10,7 @@ import java.util.Map;
  * A class that keeps track of enchantments and their Soul Gathering. It's not elegant by any means, but it should work for now.
  * @deprecated The process is now data-driven.
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 public class SoulObjectRegistry {
 
     public static class Items {

@@ -1,0 +1,165 @@
+{
+  "description": {
+    "translate": "enchantment.soul_gathering.enigma_resonator",
+    "fallback": "Enigma Resonator",
+    "color": "aqua"
+  },
+  "exclusive_set": "#minecraft:exclusive_set/damage",
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "weight": 10,
+  "max_level": 1,
+  "min_cost": {
+    "base": 4,
+    "per_level_above_first": 15
+  },
+  "max_cost": {
+    "base": 24,
+    "per_level_above_first": 15
+  },
+  "anvil_cost": 3,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "minecraft:damage": [
+      {
+        "effect": {
+          "type": "minecraft:multiply",
+          "factor": 3
+        },
+        "requirements": {
+          "condition": "minecraft:any_of",
+          "terms": [
+            {
+              "condition": "minecraft:all_of",
+              "terms": [
+                {
+                  "condition": "soul_gathering:souls_check",
+                  "entity": "this",
+                  "predicate": {
+                    "min": 1,
+                    "max": 1024
+                  }
+                },
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": {
+                    "min": 0.05,
+                    "max": 0.1
+                  }
+                }
+              ]
+            },
+            {
+              "condition": "minecraft:all_of",
+              "terms": [
+                {
+                  "condition": "soul_gathering:souls_check",
+                  "entity": "this",
+                  "predicate": {
+                    "min": 1025,
+                    "max": 2048
+                  }
+                },
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": {
+                    "min": 0.1,
+                    "max": 0.15
+                  }
+                }
+              ]
+            },
+            {
+              "condition": "minecraft:all_of",
+              "terms": [
+                {
+                  "condition": "soul_gathering:souls_check",
+                  "entity": "this",
+                  "predicate": {
+                    "min": 2049,
+                    "max": 3072
+                  }
+                },
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": {
+                    "min": 0.15,
+                    "max": 0.2
+                  }
+                }
+              ]
+            },
+            {
+              "condition": "minecraft:all_of",
+              "terms": [
+                {
+                  "condition": "soul_gathering:souls_check",
+                  "entity": "this",
+                  "predicate": {
+                    "min": 3073,
+                    "max": 4096
+                  }
+                },
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": {
+                    "min": 0.2,
+                    "max": 0.25
+                  }
+                }
+              ]
+            },
+            {
+              "condition": "minecraft:all_of",
+              "terms": [
+                {
+                  "condition": "soul_gathering:souls_check",
+                  "entity": "this",
+                  "predicate": {
+                    "min": 4097
+                  }
+                },
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": {
+                    "min": 0.25,
+                    "max": 0.3
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "minecraft:post_attack": [
+      {
+        "enchanted": "attacker",
+        "affected": "attacker",
+        "effect": {
+          "type": "minecraft:damage_entity",
+          "damage_type": "minecraft:wither",
+          "min_damage": 1,
+          "max_damage": 2
+        },
+        "requirements": {
+          "condition": "soul_gathering:souls_check",
+          "entity": "this",
+          "predicate": {
+            "max": 0
+          }
+        }
+      }
+    ],
+
+    "minecraft:armor_effectiveness": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": -0.3
+        }
+      }
+    ]
+  }
+}

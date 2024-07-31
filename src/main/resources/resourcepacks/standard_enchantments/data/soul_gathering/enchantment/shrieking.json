@@ -1,0 +1,65 @@
+{
+  "description": {
+    "translate": "enchantment.soul_gathering.shrieking",
+    "fallback": "Shrieking",
+    "color": "aqua"
+  },
+  "exclusive_set": "#minecraft:exclusive_set/damage",
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "weight": 2,
+  "max_level": 4,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 9
+  },
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 9
+  },
+  "anvil_cost": 4,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "minecraft:armor_effectiveness": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": -0.15,
+            "per_level_above_first": -0.15
+          }
+        }
+      }
+    ],
+    "minecraft:post_attack": [
+      {
+        "enchanted": "attacker",
+        "affected": "victim",
+        "effect": {
+          "type": "minecraft:play_sound",
+          "sound": "entity.warden.sonic_boom",
+          "volume": 0.8,
+          "pitch": 1
+        },
+        "requirements": {
+          "condition": "soul_gathering:souls_check",
+          "entity": "attacker",
+          "predicate": {
+            "min": 555
+          }
+        }
+      },
+      {
+        "enchanted": "attacker",
+        "affected": "attacker",
+        "effect": {
+          "type": "soul_gathering:remove_souls",
+          "min_souls": 32,
+          "max_souls": 128
+        }
+      }
+    ]
+  }
+}

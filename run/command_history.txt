@@ -1,31 +1,3 @@
-/soul add 9999 @s
-/soul add 8192 @s
-/soul set 8192 @s
-/soul query percent @s
-/soul set 0 @s
-/soul query percent Player69
-/soul set Player69 8192
-/soul query percent Player69
-/soul set @s 0
-/soul set @s 100
-/soul set @s 8192
-/soul set @s 100
-/soul set @s 0
-/soul set Player571 8192
-/soul set Player571 100
-/soul set Player571 500
-/soul add Player571 10
-/soul add Player571 100
-/soul add @s 100
-/soul add @s 256
-/soul add @s 1000
-/soul query percent @s
-/soul add @s 1000
-/soul query percent @s
-/soul query percent
-/soul query percent @s
-/soul set @s 4096
-/soul set @s 4000
 /soul set @s 10
 /soul set @s 4000
 /soul set @s 45
@@ -48,3 +20,31 @@
 /soul set Player180 0
 /soul query total Player180
 /give @s minecraft:diamond_chestplate
+/summon minecraft:husk ~ ~ ~ {CanPickUpLoot:1b}
+/soul query percent @s
+/soul query total @s
+/soul add @s 8192
+/soul query total @s
+/soul query percent @s
+/summon minecraft:husk ~ ~ ~ {CanPickUpLoot:1b}
+/soul query total @s
+/soul query percent @s
+/soul set @s 8192
+/effect give @s minecraft:instant_health
+/soul query percent @s
+/effect clear @s
+/soul set @s 8192
+/soul query percent @s
+/soul query total @s
+/soul set @s 8192
+/soul query total @s
+/soul query percent @s
+/soul
+/soul query total @s
+/soul query percent @s
+/summon minecraft:husk ~ ~ ~ {CanPickUpLoot:1b}
+/soul query percent @s
+/soul query total @s
+/summon minecraft:husk ~ ~ ~ {CanPickUpLoot:1b}
+/soul query total @s
+/soul query percent @s

@@ -1,4 +1,14 @@
 {
   "command.soul_gathering.too_many_souls.add": "Couldn't add to soul count; the specified amount is too high",
-  "command.soul_gathering.too_many_souls.remove": "Couldn't remove from soul count; the specified amount is too high"
+  "command.soul_gathering.too_many_souls.remove": "Couldn't remove from soul count; the specified amount is too high",
+  "item.soul_gathering": "+%1$s Soul Gathering",
+
+  "enchantment.soul_gathering.night_shade": "Night Shade",
+  "enchantment.soul_gathering.night_shade.desc": "Upon being attacked, your gathered souls will bathe your opponent in darkness.",
+  "enchantment.soul_gathering.enigma_resonator": "Enigma Resonator",
+  "enchantment.soul_gathering.enigma_resonator.desc": "Your attack damage has a chance of being tripled based on your soul count.",
+  "enchantment.soul_gathering.anima_conduit": "Anima Conduit",
+  "enchantment.soul_gathering.anima_conduit.desc": "Attacking an enemy saps its experience and catalyzes it into healing power.",
+  "enchantment.soul_gathering.shrieking": "Shrieking",
+  "enchantment.soul_gathering.shrieking.desc": "Attacking emits an ear-splitting boom that breaks defenses."
 }

@@ -3,6 +3,7 @@ package com.farestr06.soul_gathering.component;
 import com.farestr06.soul_gathering.enchantment.AddSoulsEntityEffect;
 import com.farestr06.soul_gathering.enchantment.SoulEnchantmentEffects;
 import com.farestr06.soul_gathering.item.SoulDataComponentTypes;
+import com.farestr06.soul_gathering.item.SoulGatheringComponent;
 import com.farestr06.soul_gathering.util.SoulTags;
 import net.fabricmc.fabric.api.tag.convention.v2.TagUtil;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -24,7 +25,7 @@ public class SoulComponentHelper {
         }
 
         /**
-         * Calculates the total soul gathering of each item; this class is used by {@link com.farestr06.soul_gathering.mixin.PlayerEntityMixin PlayerEntityMixin}
+         * Calculates the total soul gathering of each item; this method is used by {@link com.farestr06.soul_gathering.mixin.PlayerEntityMixin PlayerEntityMixin}
          * to determine how many souls the player should earn.
          * @param provider The player entity to add souls to.
          * @return The amount of souls to add.
@@ -37,7 +38,7 @@ public class SoulComponentHelper {
                     amount += Random.create().nextBetween(1, 4);
 
                 } else if (itemStack.getComponents().contains(SoulDataComponentTypes.SOUL_GATHERING)) {
-                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, Random.create().nextBetween(1, 4));
+                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, SoulGatheringComponent.of(1)).amount();
                 }
                 amount += getSoulGatheringFromEnchantments(itemStack);
             }
@@ -46,7 +47,7 @@ public class SoulComponentHelper {
                     amount += Random.create().nextBetween(1, 4);
 
                 } else if (itemStack.getComponents().contains(SoulDataComponentTypes.SOUL_GATHERING)) {
-                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, Random.create().nextBetween(1, 4));
+                    amount += itemStack.getComponents().getOrDefault(SoulDataComponentTypes.SOUL_GATHERING, SoulGatheringComponent.of(1)).amount();
                 }
                 amount += getSoulGatheringFromEnchantments(itemStack);
             }

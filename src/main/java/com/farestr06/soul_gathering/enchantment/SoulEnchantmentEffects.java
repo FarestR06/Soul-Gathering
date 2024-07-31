@@ -1,14 +1,11 @@
 package com.farestr06.soul_gathering.enchantment;
 
 import com.farestr06.soul_gathering.SoulGathering;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.component.ComponentType;
 import net.minecraft.enchantment.effect.EnchantmentEffectEntry;
-import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
