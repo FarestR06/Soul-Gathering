@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 
 import static net.minecraft.server.command.CommandManager.*;
 
-public class `SoulCommand {
+public class SoulCommand {
     static final SimpleCommandExceptionType TOO_MANY_SOULS_ADD = new SimpleCommandExceptionType(Text.translatable("command.soul_gathering.too_many_souls.add"));
     static final SimpleCommandExceptionType TOO_MANY_SOULS_REMOVE = new SimpleCommandExceptionType(Text.translatable("command.soul_gathering.too_many_souls.remove"));
 

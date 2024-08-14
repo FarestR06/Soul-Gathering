@@ -17,7 +17,7 @@ public class ModLootConditionType {
         return Registry.register(Registries.LOOT_CONDITION_TYPE, Identifier.of("soul_gathering", id), new LootConditionType(codec));
     }
 
-    public static void bootstrap() {
+    public static void register() {
         LOGGER.info("Registering predicate!");
     }
 }

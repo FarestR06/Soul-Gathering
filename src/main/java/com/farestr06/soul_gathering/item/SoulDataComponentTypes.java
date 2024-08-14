@@ -16,7 +16,7 @@ public class SoulDataComponentTypes {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of("soul_gathering", id), builderOperator.apply(ComponentType.builder()).build());
     }
 
-    public static void bootstrap() {
+    public static void register() {
         SoulGathering.LOGGER.info("Registering DataComponentTypes!");
     }
 }

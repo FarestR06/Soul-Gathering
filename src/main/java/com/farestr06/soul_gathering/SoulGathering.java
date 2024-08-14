@@ -25,14 +25,14 @@ public class SoulGathering implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initializing Soul Gathering");
-        ModLootConditionType.bootstrap();
-        SoulEnchantmentEffects.init();
-        SoulDataComponentTypes.bootstrap();
+        ModLootConditionType.register();
+        SoulEnchantmentEffects.register();
+        SoulDataComponentTypes.register();
         SoulCommand.registerCommand();
 
-        if (ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of("soul_gathering", "standard_enchantments"),
+        if (ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of("soul_gathering", "standard_data"),
                 FabricLoader.getInstance().getModContainer("soul_gathering").orElseThrow(),
-                Text.literal("Soul Gathering Standard Enchantments").setStyle(Style.EMPTY.withFont(Identifier.of("alt")))
+                Text.literal("Soul Gathering Standard Data").setStyle(Style.EMPTY.withFont(Identifier.of("alt")))
                         .formatted(Formatting.AQUA), ResourcePackActivationType.DEFAULT_ENABLED)) {
             LOGGER.info("Standard enchantments loaded!");
         } else {
@@ -40,6 +40,16 @@ public class SoulGathering implements ModInitializer {
         }
 
         DefaultItemComponentEvents.MODIFY.register(context -> {
+            context.modify(Items.DIAMOND_SWORD, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_SHOVEL, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_PICKAXE, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_AXE, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_HOE, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_HELMET, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_CHESTPLATE, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_LEGGINGS, builder -> builder.addAll(genSoulGatheringForDiamond()));
+            context.modify(Items.DIAMOND_BOOTS, builder -> builder.addAll(genSoulGatheringForDiamond()));
+
             context.modify(Items.NETHERITE_SWORD, builder -> builder.addAll(genSoulGatheringForNetherite()));
             context.modify(Items.NETHERITE_SHOVEL, builder -> builder.addAll(genSoulGatheringForNetherite()));
             context.modify(Items.NETHERITE_PICKAXE, builder -> builder.addAll(genSoulGatheringForNetherite()));
@@ -52,9 +62,14 @@ public class SoulGathering implements ModInitializer {
         });
     }
 
-    private ComponentMap genSoulGatheringForNetherite() {
+    private ComponentMap genSoulGatheringForDiamond() {
         return ComponentMap.builder().add(
                 SoulDataComponentTypes.SOUL_GATHERING, SoulGatheringComponent.of(1)
+        ).build();
+    }
+    private ComponentMap genSoulGatheringForNetherite() {
+        return ComponentMap.builder().add(
+                SoulDataComponentTypes.SOUL_GATHERING, SoulGatheringComponent.of(3)
         ).build();
     }
 }

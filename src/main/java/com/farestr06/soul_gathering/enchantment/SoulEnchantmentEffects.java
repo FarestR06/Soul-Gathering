@@ -25,7 +25,7 @@ public class SoulEnchantmentEffects {
         return Registry.register(Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE, Identifier.of("soul_gathering", id), builderOperator.apply(ComponentType.builder()).build());
     }
 
-    public static void init() {
+    public static void register() {
         SoulGathering.LOGGER.info("Initializing Enchantment Effects...");
         Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of("soul_gathering", "remove_souls"), RemoveSoulsEntityEffect.CODEC);
         Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of("soul_gathering", "add_souls"), AddSoulsEntityEffect.CODEC);
