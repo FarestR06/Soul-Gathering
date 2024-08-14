@@ -27,20 +27,18 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
 
     @Override
     public void addSouls(int amount) {
-        if (soulCount >= 8192) {
+        soulCount += amount;
+        if (soulCount > 8192) {
             soulCount = 8192;
-        } else {
-            soulCount += amount;
         }
         ModComponents.SOUL_COMPONENT.sync(provider);
     }
 
     @Override
     public void removeSouls(int amount) {
-        if (soulCount <= 0) {
+        soulCount -= amount;
+        if (soulCount < 0) {
             soulCount = 0;
-        } else {
-            soulCount -= amount;
         }
         ModComponents.SOUL_COMPONENT.sync(provider);
     }
@@ -52,6 +50,12 @@ public class EntitySoulComponent implements SoulComponent, AutoSyncedComponent {
 
     @Override
     public void writeToNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
+        if (this.soulCount > 8192) {
+            this.soulCount = 8192;
+        }
+        if (this.soulCount < 0) {
+            this.soulCount = 0;
+        }
         tag.putInt("soul_count", this.soulCount);
     }
 
