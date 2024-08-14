@@ -27,7 +27,7 @@ public record SoulsCheckLootCondition(SoulsCheckPredicate soulsCheckPredicate, L
 
     @Override
     public LootConditionType getType() {
-        return ModLootConditionType.SOULS_CHECK;
+        return SoulLootConditionType.SOULS_CHECK;
     }
 
     @Override

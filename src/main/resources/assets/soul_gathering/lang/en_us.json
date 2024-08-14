@@ -1,4 +1,5 @@
 {
+  "dataPack.standard_enchantments.title": "Soul Gathering Standard Data",
   "command.soul_gathering.too_many_souls.add": "Couldn't add to soul count; the specified amount is too high",
   "command.soul_gathering.too_many_souls.remove": "Couldn't remove from soul count; the specified amount is too high",
   "item.soul_gathering": "+%s Soul Gathering",

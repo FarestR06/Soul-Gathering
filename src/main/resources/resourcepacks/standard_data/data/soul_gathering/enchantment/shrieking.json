@@ -40,8 +40,8 @@
         "effect": {
           "type": "minecraft:play_sound",
           "sound": "entity.warden.sonic_boom",
-          "volume": 0.8,
-          "pitch": 1
+          "volume": 0.3,
+          "pitch": 2
         },
         "requirements": {
           "condition": "soul_gathering:souls_check",

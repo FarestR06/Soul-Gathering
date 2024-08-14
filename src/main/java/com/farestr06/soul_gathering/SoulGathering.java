@@ -4,7 +4,7 @@ import com.farestr06.soul_gathering.command.SoulCommand;
 import com.farestr06.soul_gathering.enchantment.SoulEnchantmentEffects;
 import com.farestr06.soul_gathering.item.SoulDataComponentTypes;
 import com.farestr06.soul_gathering.item.SoulGatheringComponent;
-import com.farestr06.soul_gathering.loot.ModLootConditionType;
+import com.farestr06.soul_gathering.loot.SoulLootConditionType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -25,7 +25,7 @@ public class SoulGathering implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initializing Soul Gathering");
-        ModLootConditionType.register();
+        SoulLootConditionType.register();
         SoulEnchantmentEffects.register();
         SoulDataComponentTypes.register();
         SoulCommand.registerCommand();
