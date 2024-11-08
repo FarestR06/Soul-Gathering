@@ -37,8 +37,10 @@
                   "condition": "soul_gathering:souls_check",
                   "entity": "this",
                   "predicate": {
-                    "min": 1,
-                    "max": 1024
+                    "level": {
+                      "min": 1,
+                      "max": 1024
+                    }
                   }
                 },
                 {
@@ -57,8 +59,10 @@
                   "condition": "soul_gathering:souls_check",
                   "entity": "this",
                   "predicate": {
-                    "min": 1025,
-                    "max": 2048
+                    "level": {
+                      "min": 1025,
+                      "max": 2048
+                    }
                   }
                 },
                 {
@@ -77,8 +81,10 @@
                   "condition": "soul_gathering:souls_check",
                   "entity": "this",
                   "predicate": {
-                    "min": 2049,
-                    "max": 3072
+                    "level": {
+                      "min": 2049,
+                      "max": 3072
+                    }
                   }
                 },
                 {
@@ -97,8 +103,10 @@
                   "condition": "soul_gathering:souls_check",
                   "entity": "this",
                   "predicate": {
-                    "min": 3073,
-                    "max": 4096
+                    "level": {
+                      "min": 3073,
+                      "max": 4096
+                    }
                   }
                 },
                 {
@@ -117,7 +125,9 @@
                   "condition": "soul_gathering:souls_check",
                   "entity": "this",
                   "predicate": {
-                    "min": 4097
+                    "level": {
+                      "min": 4097
+                    }
                   }
                 },
                 {

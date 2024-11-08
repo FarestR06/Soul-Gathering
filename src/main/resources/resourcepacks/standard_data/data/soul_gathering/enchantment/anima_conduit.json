@@ -59,7 +59,9 @@
             "condition": "soul_gathering:souls_check",
             "entity": "attacker",
             "predicate": {
-              "min": 512
+              "level": {
+                "min": 512
+              }
             }
           }
         ]

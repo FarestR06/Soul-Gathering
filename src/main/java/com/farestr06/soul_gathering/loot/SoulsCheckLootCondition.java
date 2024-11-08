@@ -10,7 +10,6 @@ import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameter;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.Set;
 
@@ -34,7 +33,6 @@ public record SoulsCheckLootCondition(SoulsCheckPredicate soulsCheckPredicate, L
     public boolean test(LootContext ctx) {
         Entity entity = ctx.get(this.entity.getParameter());
         ServerWorld world = ctx.getWorld();
-        Vec3d vec3d = ctx.get(LootContextParameters.ORIGIN);
-        return soulsCheckPredicate.test(entity, world, vec3d);
+        return soulsCheckPredicate.test(entity, world, null);
     }
 }

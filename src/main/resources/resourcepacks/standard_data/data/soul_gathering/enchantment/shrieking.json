@@ -30,6 +30,15 @@
             "base": -0.15,
             "per_level_above_first": -0.15
           }
+        },
+        "requirements": {
+          "condition": "soul_gathering:souls_check",
+          "entity": "attacker",
+          "predicate": {
+            "level": {
+              "min": 555
+            }
+          }
         }
       }
     ],
@@ -47,7 +56,9 @@
           "condition": "soul_gathering:souls_check",
           "entity": "attacker",
           "predicate": {
-            "min": 555
+            "level": {
+              "min": 555
+            }
           }
         }
       },

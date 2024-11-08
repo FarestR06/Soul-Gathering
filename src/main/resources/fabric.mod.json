@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "soul_gathering",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "name": "Soul Gathering",
   "description": "Adds the Soul mechanic from Minecraft Dungeons",
   "authors": [
@@ -29,14 +29,15 @@
     "soul_gathering.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.15.11",
-    "fabric": "*",
-    "minecraft": "1.21.x",
+    "fabricloader": ">=0.16.9",
+    "fabric-api": ">=0.107.0+1.21.1",
+    "minecraft": "1.21.1",
     "cardinal-components-base": "6.1.1",
     "cardinal-components-entity": "6.1.1"
   },
   "suggests": {
-    "idwtialsimmoedm": "*"
+    "idwtialsimmoedm": "*",
+    "enchdesc": "*"
   },
   "custom": {
     "cardinal-components": [

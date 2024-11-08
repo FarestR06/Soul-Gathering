@@ -41,9 +41,11 @@
         },
         "requirements": {
           "condition": "soul_gathering:souls_check",
-          "entity": "this",
+          "entity": "attacker",
           "predicate": {
-            "min": 20
+            "level": {
+              "min": 20
+            }
           }
         }
       },
