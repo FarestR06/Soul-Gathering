@@ -4,6 +4,17 @@
   "command.soul_gathering.too_many_souls.remove": "Couldn't remove from soul count; the specified amount is too high",
   "item.soul_gathering": "+%s Soul Gathering",
 
+  "config.soul_gathering.title": "Soul Gathering Settings",
+  "config.soul_gathering.group.items": "Item Settings",
+  "config.soul_gathering.one_soul.name": "Has +1 Soul Gathering",
+  "config.soul_gathering.one_soul.desc": "Items in this list will have a Soul Gathering of one. Entries must be a namespaced ID (i.e. \"foo:bar\")",
+  "config.soul_gathering.three_souls.name": "Has +3 Soul Gathering",
+  "config.soul_gathering.three_souls.desc": "Items in this list will have a Soul Gathering of three. Entries must be a namespaced ID (i.e. \"foo:bar\")",
+  "config.soul_gathering.five_souls.name": "Has +5 Soul Gathering",
+  "config.soul_gathering.five_souls.desc": "Items in this list will have a Soul Gathering of five. Entries must be a namespaced ID (i.e. \"foo:bar\")",
+  "config.soul_gathering.default_gatherings_as_components.name": "Automatically apply default Soul Gathering components",
+  "config.soul_gathering.default_gatherings_as_components.desc": "When enabled, the game will automatically apply Soul Gathering data components to Diamond and Netherite on startup.",
+
   "enchantment.soul_gathering.night_shade": "Night Shade",
   "enchantment.soul_gathering.night_shade.desc": "Upon being attacked, your gathered souls will bathe your opponent in darkness.",
   "enchantment.soul_gathering.enigma_resonator": "Enigma Resonator",

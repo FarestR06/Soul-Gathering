@@ -21,6 +21,9 @@
     "main": [
       "com.farestr06.soul_gathering.SoulGathering"
     ],
+    "modmenu": [
+      "com.farestr06.soul_gathering.config.ModConfigScreen"
+    ],
     "cardinal-components": [
       "com.farestr06.soul_gathering.component.ModComponents"
     ]
@@ -30,10 +33,12 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.9",
-    "fabric-api": ">=0.107.0+1.21.1",
-    "minecraft": "1.21.1",
-    "cardinal-components-base": "6.1.1",
-    "cardinal-components-entity": "6.1.1"
+    "fabric-api": ">=0.110.0+1.21.3",
+    "minecraft": "1.21.3",
+    "cardinal-components-base": "6.2.0",
+    "cardinal-components-entity": "6.2.0",
+    "modmenu": "12.0.0-beta.1",
+    "yet_another_config_lib_v3": "3.6.1+1.21.2-fabric"
   },
   "suggests": {
     "idwtialsimmoedm": "*",

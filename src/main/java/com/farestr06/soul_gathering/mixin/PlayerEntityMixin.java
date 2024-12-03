@@ -20,7 +20,7 @@ public abstract class PlayerEntityMixin {
     private void injectOnKilledOther(ServerWorld world, LivingEntity other, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity provider = other.getAttacker();
         if (provider instanceof PlayerEntity) {
-            ModComponents.SOUL_COMPONENT.get(provider).addSouls(SoulComponentHelper.MathHelper.calcSoulAdderAmount(((PlayerEntity) provider)));
+            ModComponents.SOUL_COMPONENT.get(provider).addSouls(SoulComponentHelper.calcSoulAdderAmount(((PlayerEntity) provider)));
         }
     }
 }

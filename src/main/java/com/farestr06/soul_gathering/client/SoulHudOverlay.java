@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.Identifier;
@@ -45,17 +45,16 @@ public class SoulHudOverlay implements HudRenderCallback {
 
         x = width / 2 + 91;
 
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         if (minecraft.interactionManager.hasStatusBars()) {
             for (int i = 0; i < 10; ++i) {
                 xb = x - i * 8 - 9;
-                drawContext.drawGuiTexture(SOUL_EMPTY, xb, y(minecraft) - 59, 9, 9);
+                drawContext.drawGuiTexture(RenderLayer::getGuiTextured, SOUL_EMPTY, xb, y(minecraft) - 59, 9, 9);
                 if (i * 2 + 1 < h) {
-                    drawContext.drawGuiTexture(SOUL_FULL, xb, y(minecraft) - 59, 9, 9);
+                    drawContext.drawGuiTexture(RenderLayer::getGuiTextured, SOUL_FULL, xb, y(minecraft) - 59, 9, 9);
                 }
                 if (i * 2 + 1 != h) continue;
-                drawContext.drawGuiTexture(SOUL_HALF, xb, y(minecraft) - 59 , 9, 9);
+                drawContext.drawGuiTexture(RenderLayer::getGuiTextured, SOUL_HALF, xb, y(minecraft) - 59 , 9, 9);
             }
         }
     }

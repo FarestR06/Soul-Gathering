@@ -25,7 +25,7 @@ public class SoulCommand {
                         .then(argument("player", EntityArgumentType.player())
                             .executes(context -> {
                                 final PlayerEntity player = EntityArgumentType.getPlayer(context, "player");
-                                int value = SoulComponentHelper.MathHelper.mappedSoulCount(player);
+                                int value = SoulComponentHelper.mappedSoulCount(player);
                                 context.getSource().sendFeedback(() -> Text.literal("%s's soul count is currently at %s percent".formatted(player.getName().getLiteralString(), value)), true);
                                 return value;
                             })))

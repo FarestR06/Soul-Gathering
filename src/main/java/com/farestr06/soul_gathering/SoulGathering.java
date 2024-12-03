@@ -1,6 +1,7 @@
 package com.farestr06.soul_gathering;
 
 import com.farestr06.soul_gathering.command.SoulCommand;
+import com.farestr06.soul_gathering.config.ModConfig;
 import com.farestr06.soul_gathering.enchantment.SoulEnchantmentEffects;
 import com.farestr06.soul_gathering.item.SoulDataComponentTypes;
 import com.farestr06.soul_gathering.item.SoulGatheringComponent;
@@ -25,6 +26,12 @@ public class SoulGathering implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initializing Soul Gathering");
+        ModConfig.init();
+
+        if (ModConfig.HANDLER.instance().addDefaultSoulGatheringsAsDataComponents) {
+            defaultGathering();
+        }
+
         SoulLootConditionType.register();
         SoulEnchantmentEffects.register();
         SoulDataComponentTypes.register();
@@ -39,6 +46,9 @@ public class SoulGathering implements ModInitializer {
             LOGGER.warn("Failed to load standard enchantments...");
         }
 
+    }
+
+    private void defaultGathering() {
         DefaultItemComponentEvents.MODIFY.register(context -> {
             context.modify(Items.DIAMOND_SWORD, builder -> builder.addAll(genSoulGatheringForDiamond()));
             context.modify(Items.DIAMOND_SHOVEL, builder -> builder.addAll(genSoulGatheringForDiamond()));
